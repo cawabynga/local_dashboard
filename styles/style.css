@@ -1,5 +1,6 @@
 
 body {
+  padding: 20px;
   font-family: sans-serif;
 }
 .container > section {
@@ -9,17 +10,12 @@ body {
   border: 2px solid rgb(79 185 227);
 }
 .container {
+  gap: 20px;
   display: grid;
+  grid-template-columns: 1fr;
 }
 @media (width > 700px) {
 .container {
   grid-template-columns: 3fr 2fr;
 }
-}
-@media (width <= 700px) {
-  .container {
-  grid-template-columns: 1fr;
-}
-}
-
 
