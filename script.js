@@ -1,12 +1,16 @@
 function addShortTask() {
-	let taskText = document.getElementById("textShort").textContent;
-	const shortTasks = document.getElementById("shortTasks")
-	const newShortTask = createElement("li")
-	newShortTask.appendChild(document.createTextNode(taskText))
+	let taskText = document.querySelector(".inpShort").value;
+	const shortTasks = document.querySelector(".shortTasks");
+	const newShortTask = document.createElement("li");
+	newShortTask.textContent = taskText;
+	shortTasks.appendChild(newShortTask);
 }
-const btnShort = document.getElementById("btnShort");
+const shortForm = document.querySelector(".shortForm");
 
-btnShort.addEventListener('click', () => {
-	console.log('button clicked')
-	addShortTask()
-})
+shortForm.addEventListener('submit', function(event) {
+	console.log('form submitted');
+	event.preventDefault();
+	if (document.querySelector(".inpShort").value.trim() != "") => {
+	addShortTask();
+}
+});
