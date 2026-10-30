@@ -1,30 +1,7 @@
-function addShortTask() {
-	let taskText = document.querySelector(".inpShort").value;
-	const shortTasks = document.querySelector(".shortTasks");
-	const newShortTask = document.createElement("li");
-	const textNode = document.createTextNode(taskText);
-	const checkbox = document.createElement("input");
-	checkbox.type = "checkbox"
-	const dBtn = document.createElement("button")
-	dBtn.type = "button"
-	dBtn.textContent = "Delete";
-
-	newShortTask.append(checkbox, textNode, dBtn);
-	shortTasks.appendChild(newShortTask);
-
-	document.querySelector(".inpShort").value = "";
-	dBtn.addEventListener("click",function(event) {
-		newShortTask.remove()
-	})
-	checkbox.addEventListener("change", function(event) {
-		console.log("checkbox changed")
-		newShortTask.classList.toggle("completed")
-})
-};
-function addLongTask() {
-	let taskText = document.querySelector(".inpLong").value;
-	const longTasks = document.querySelector(".longTasks");
-	const newLongTask = document.createElement("li");
+function addTask(inputSelector,listSelector) {
+	let taskText = document.querySelector(inputSelector).value;
+	const tasks = document.querySelector(listSelector);
+	const newTask = document.createElement("li");
 	const textNode = document.createTextNode(taskText);
 	const checkbox = document.createElement("input");
 	checkbox.type = "checkbox"
@@ -33,16 +10,16 @@ function addLongTask() {
 	dBtn.textContent = "Delete";
 
 
-	newLongTask.append(checkbox, textNode, dBtn);
-	longTasks.appendChild(newLongTask);
+	newTask.append(checkbox, textNode, dBtn);
+	tasks.appendChild(newTask);
 
-	document.querySelector(".inpLong").value = "";
+	document.querySelector(inputSelector).value = "";
 	dBtn.addEventListener("click",function(event) {
-		newLongTask.remove()
+		newTask.remove()
 	})
 	checkbox.addEventListener("change", function(event) {
 		console.log("checkbox changed")
-		newLongTask.classList.toggle("completed")
+		newTask.classList.toggle("completed", checkbox.checked)
 })
 };
 
@@ -53,7 +30,7 @@ shortForm.addEventListener('submit', function(event) {
 	console.log('form submitted');
 	event.preventDefault();
 	if (document.querySelector(".inpShort").value.trim() != "") {
-	addShortTask();
+	addTask(".inpShort", ".shortTasks");
 }
 });
 const longForm = document.querySelector(".longForm");
@@ -62,6 +39,6 @@ longForm.addEventListener('submit', function(event) {
 	console.log('form submitted');
 	event.preventDefault();
 	if (document.querySelector(".inpLong").value.trim() != "") {
-	addLongTask();
+	addTask(".inpLong", ".longTasks");
 }
 });
