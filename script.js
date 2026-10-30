@@ -2,25 +2,36 @@ function addShortTask() {
 	let taskText = document.querySelector(".inpShort").value;
 	const shortTasks = document.querySelector(".shortTasks");
 	const newShortTask = document.createElement("li");
-	newShortTask.textContent = taskText;
+	const textNode = document.createTextNode(taskText);
 	const checkbox = document.createElement("input");
 	checkbox.type = "checkbox"
+
 	newShortTask.appendChild(checkbox);
+	newShortTask.appendChild(textNode);
 	shortTasks.appendChild(newShortTask);
+
 	document.querySelector(".inpShort").value = "";
 	checkbox.addEventListener("change", function(event) {
 		console.log("checkbox changed")
 		newShortTask.classList.toggle("completed")
 })
-
 };
 function addLongTask() {
 	let taskText = document.querySelector(".inpLong").value;
 	const longTasks = document.querySelector(".longTasks");
 	const newLongTask = document.createElement("li");
-	newLongTask.textContent = taskText;
+	const textNode = document.createTextNode(taskText);
+	const checkbox = document.createElement("input");
+	checkbox.type = "checkbox"
+
+	newLongTask.appendChild(checkbox);
+	newLongTask.appendChild(textNode);
 	longTasks.appendChild(newLongTask);
 	document.querySelector(".inpLong").value = "";
+	checkbox.addEventListener("change", function(event) {
+		console.log("checkbox changed")
+		newLongTask.classList.toggle("completed")
+})
 };
 
 
