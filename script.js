@@ -5,12 +5,17 @@ function addShortTask() {
 	const textNode = document.createTextNode(taskText);
 	const checkbox = document.createElement("input");
 	checkbox.type = "checkbox"
+	const dBtn = document.createElement("button")
+	dBtn.type = "button"
+	dBtn.textContent = "Delete";
 
-	newShortTask.appendChild(checkbox);
-	newShortTask.appendChild(textNode);
+	newShortTask.append(checkbox, textNode, dBtn);
 	shortTasks.appendChild(newShortTask);
 
 	document.querySelector(".inpShort").value = "";
+	dBtn.addEventListener("click",function(event) {
+		newShortTask.remove()
+	})
 	checkbox.addEventListener("change", function(event) {
 		console.log("checkbox changed")
 		newShortTask.classList.toggle("completed")
@@ -23,11 +28,18 @@ function addLongTask() {
 	const textNode = document.createTextNode(taskText);
 	const checkbox = document.createElement("input");
 	checkbox.type = "checkbox"
+	const dBtn = document.createElement("button")
+	dBtn.type = "button"
+	dBtn.textContent = "Delete";
 
-	newLongTask.appendChild(checkbox);
-	newLongTask.appendChild(textNode);
+
+	newLongTask.append(checkbox, textNode, dBtn);
 	longTasks.appendChild(newLongTask);
+
 	document.querySelector(".inpLong").value = "";
+	dBtn.addEventListener("click",function(event) {
+		newLongTask.remove()
+	})
 	checkbox.addEventListener("change", function(event) {
 		console.log("checkbox changed")
 		newLongTask.classList.toggle("completed")
