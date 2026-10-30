@@ -3,8 +3,16 @@ function addShortTask() {
 	const shortTasks = document.querySelector(".shortTasks");
 	const newShortTask = document.createElement("li");
 	newShortTask.textContent = taskText;
+	const checkbox = document.createElement("input");
+	checkbox.type = "checkbox"
+	newShortTask.appendChild(checkbox);
 	shortTasks.appendChild(newShortTask);
 	document.querySelector(".inpShort").value = "";
+	checkbox.addEventListener("change", function(event) {
+		console.log("checkbox changed")
+		newShortTask.classList.toggle("completed")
+})
+
 };
 function addLongTask() {
 	let taskText = document.querySelector(".inpLong").value;

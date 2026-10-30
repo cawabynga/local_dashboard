@@ -19,3 +19,7 @@ body {
   grid-template-columns: 3fr 2fr;
 }
 }
+.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
