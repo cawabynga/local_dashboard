@@ -30,8 +30,9 @@ shortForm.addEventListener('submit', function(event) {
 	console.log('form submitted');
 	event.preventDefault();
 	if (document.querySelector(".inpShort").value.trim() != "") {
-		let taskText = document.querySelector(".inpShort").valu
+		let taskText = document.querySelector(".inpShort").value
 		newTask(taskText, "short");
+		document.querySelector(".inpShort").value = ""
 }
 });
 const longForm = document.querySelector(".longForm");
@@ -40,7 +41,9 @@ longForm.addEventListener('submit', function(event) {
 	console.log('form submitted');
 	event.preventDefault();
 	if (document.querySelector(".inpLong").value.trim() != "") {
-	addTask(".inpLong", ".longTasks");
+		let taskText = document.querySelector(".inpLong").value
+		newTask(taskText, "long")
+		document.querySelector(".inpLong").value = ""
 }
 });
 
@@ -58,5 +61,5 @@ function newTask(text, category){
 	let status = false
 	const task = {id, text, status, category}
 	tasks.push(task)
-	console.table(tasks)
+	console.table(tasks);
 }
