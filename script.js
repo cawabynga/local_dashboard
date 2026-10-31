@@ -25,12 +25,13 @@ function addTask(inputSelector,listSelector) {
 
 
 const shortForm = document.querySelector(".shortForm");
-
+let tasks = []
 shortForm.addEventListener('submit', function(event) {
 	console.log('form submitted');
 	event.preventDefault();
 	if (document.querySelector(".inpShort").value.trim() != "") {
-	addTask(".inpShort", ".shortTasks");
+		let taskText = document.querySelector(".inpShort").valu
+		newTask(taskText, "short");
 }
 });
 const longForm = document.querySelector(".longForm");
@@ -42,3 +43,20 @@ longForm.addEventListener('submit', function(event) {
 	addTask(".inpLong", ".longTasks");
 }
 });
+
+function generateUniqueId(tasks) {
+    let id;
+
+    do {
+        id = crypto.randomUUID();
+    } while (tasks.some(task => task.id === id));
+
+    return id;
+}
+function newTask(text, category){
+	let id = generateUniqueId(tasks)
+	let status = false
+	const task = {id, text, status, category}
+	tasks.push(task)
+	console.table(tasks)
+}
